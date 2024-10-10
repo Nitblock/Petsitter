@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de visitas</title>
+</head>
+<body>
+    <h1>Bienvenidos a nuestra página</h1>
+    <p>Visitas a la página:</p>
+    <h2 id="counter">0</h2>
+
+    <script>
+        // Código que obtiene el contador de visitas
+        async function fetchCounter() {
+            let response = await fetch('https://tuservidor.com/api/contador');
+            let data = await response.json();
+            document.getElementById('counter').textContent = data.visitas;
+        }
+
+        // Llamada al servidor cuando se carga la página
+        fetchCounter();
+    </script>
+</body>
+</html>
