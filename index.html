@@ -11,14 +11,18 @@
     <h2 id="counter">0</h2>
 
     <script>
-        // Código que obtiene el contador de visitas
+        // Código que obtiene el contador de visitas del backend
         async function fetchCounter() {
-            let response = await fetch('nitblock.github.io/Petsitter');
-            let data = await response.json();
-            document.getElementById('counter').textContent = data.visitas;
+            try {
+                let response = await fetch('nitblock.github.io/Petsitter/contador');
+                let data = await response.json();
+                document.getElementById('counter').textContent = data.visitas;
+            } catch (error) {
+                console.error('Error obteniendo el contador:', error);
+            }
         }
 
-        // Llamada al servidor cuando se carga la página
+        // Ejecuta la función cuando se carga la página
         fetchCounter();
     </script>
 </body>
